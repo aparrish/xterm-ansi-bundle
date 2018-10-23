@@ -1,0 +1,47 @@
+<!doctype html>
+  <html>
+    <head>
+      <link rel="stylesheet" href="xterm.css" />
+      <script src="xterm-ansi-bundle.js"></script>
+        <style type="text/css">
+            body, html {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body id="terminal">
+      <script>
+        let term = new xterm.Terminal({fontFamily: "Courier", fontSize: 24});
+        term.open(document.getElementById('terminal'));
+        term.fit();
+        window.addEventListener('resize', function() {
+            term.fit();
+        });
+
+        let colors = ["magenta", "cyan", "blue", "white"];
+        let chars = [".", "+", "*"];
+        setInterval(function() {
+            for (let i = 0; i < 25; i++) {
+                term.write(ansi.cursor.position(Math.ceil(Math.random()*term.rows),
+                    Math.ceil(Math.random()*term.cols)));
+                let color = colors[Math.floor(Math.random()*colors.length)];
+                let ch = chars[Math.floor(Math.random()*chars.length)];
+                if (Math.random() < 0.5) {
+                    term.write(ansi.format(ch, [color, "bold"]));
+                }
+                else {
+                    term.write(ansi.format(ch, [color]));
+                }
+            }
+            for (let i = 0; i < 25; i++) {
+                term.write(ansi.cursor.position(Math.ceil(Math.random()*term.rows),
+                    Math.ceil(Math.random()*term.cols)));
+                term.write(" ");
+            }
+        }, 100);
+      </script>
+    </body>
+  </html>

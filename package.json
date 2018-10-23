@@ -1,0 +1,20 @@
+{
+  "name": "xterm-ansi-bundle",
+  "version": "0.0.1",
+  "description": "xterm.js and ansi-escape-sequences bundled for browser use",
+  "main": "index.js",
+  "scripts": {
+    "start": "watchify index.js -o xterm-ansi-bundle.js",
+    "build": "browserify index.js -o xterm-ansi-bundle.js"
+  },
+  "keywords": [],
+  "author": "Allison Parrish",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^16.2.3"
+  },
+  "dependencies": {
+    "ansi-escape-sequences": "^4.0.0",
+    "xterm": "^3.8.0"
+  }
+}
