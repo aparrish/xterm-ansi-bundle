@@ -46,7 +46,7 @@ fit the containing HTML element. Typical usage might look like this:
         term.fit();
       });
 
-      term.write(ansi.styles(['red', 'bold']);
+      term.write(ansi.styles(['red', 'bold']));
       term.write("hello!");
     </script>
 
